@@ -41,7 +41,7 @@ public class AlunoServiceTest {
         // when
 
         //Optional<Aluno> op= Optional.empty();
-        when(alunoRepository.findByNome(expectedAlunoDTO.getNome())).thenReturn(Optional.empty());
+        //when(alunoRepository.findByNome(expectedAlunoDTO.getNome())).thenReturn(Optional.empty());
         when(alunoRepository.save(expectedSavedAluno)).thenReturn(expectedSavedAluno);
         // then
         AlunoDTO createdAlunoDTO = alunoService.create(expectedAlunoDTO);
@@ -56,7 +56,7 @@ public class AlunoServiceTest {
         AlunoDTO expectedAlunoDTO = new AlunoDTOBuilder().builder().build().toAlunoDTO();
         Aluno duplicatedAluno = AlunoMapper.toModel(expectedAlunoDTO);
         // when
-        when(alunoRepository.findByNome(expectedAlunoDTO.getNome())).thenReturn(Optional.of(duplicatedAluno));
+        //when(alunoRepository.findByNome(expectedAlunoDTO.getNome())).thenReturn(Optional.of(duplicatedAluno));
 
         assertThrows(AlunoAlreadyRegisteredException.class,() -> alunoService.create(expectedAlunoDTO));
     }
